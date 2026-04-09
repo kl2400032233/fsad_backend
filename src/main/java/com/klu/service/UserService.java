@@ -9,7 +9,7 @@ import com.klu.model.User;
 import com.klu.repository.UserRepository;
 
 @Service
-public class UserService {
+public class UserService  {
 
     @Autowired
     private UserRepository repo;
@@ -17,10 +17,12 @@ public class UserService {
     // ✅ REGISTER METHOD (prevents duplicate emails)
     public User register(User user) {
 
+    	
         Optional<User> existingUser = repo.findByEmail(user.getEmail());
 
         if (existingUser.isPresent()) {
             throw new RuntimeException("Email already exists");
+            
         }
 
         return repo.save(user);
@@ -40,5 +42,9 @@ public class UserService {
         }
 
         return null;
+        
+     // user service handles register and login
+     // small update commit 1
     }
+    
 }
