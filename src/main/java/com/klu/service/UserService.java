@@ -38,13 +38,14 @@ public class UserService  {
 
             if (user.getPassword().equals(password)) {
                 return user;
+             
             }
         }
 
         return null;
         
-     // user service handles register and login
-     // small update commit 1
+     
+       
     }
     
 }
