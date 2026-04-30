@@ -29,13 +29,16 @@ public class DonationController {
 
     // 🔹 UPDATE STATUS (ADMIN)
     @PutMapping("/{id}/status")
-    public Donation updateStatus(@PathVariable Long id, @RequestParam String status) {
-        Donation donation = repo.findById(id).orElseThrow(() -> new RuntimeException("Donation not found"));
+    public Donation updateStatus(
+            @PathVariable("id") Long id,
+            @RequestParam("status") String status) {
+
+        Donation donation = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Donation not found"));
 
         donation.setStatus(status);
 
         return repo.save(donation);
-        
-        }
+    }
 }
 
